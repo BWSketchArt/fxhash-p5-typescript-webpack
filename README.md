@@ -1,5 +1,3 @@
-# fxhash-p5-typescript-webpack
-
 # FxHash P5 TypeScript Webpack Starter
 
 Project to quickly setup FxHash template with [p5.js](https://p5js.org/) and [typescript](https://www.typescriptlang.org/).
