@@ -13,6 +13,10 @@ export class App {
 
         this.createTitle();
 
+        this.createCanvasSize();
+        this.createPosition();
+        this.createScale();
+
         console.log(`🚀 App Started | %s | Seed: %s, Hash: %s`,
             window.document.title, this.state.seed, this.state.hash);
     }
