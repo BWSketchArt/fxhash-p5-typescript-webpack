@@ -1,5 +1,10 @@
 import {app, p5} from "../index";
 
+interface ElementSize {
+    width: number,
+    height: number
+}
+
 export class Controls {
     numberOfShapes: p5.Element
     numberOfShapesText: p5.Element
@@ -12,9 +17,19 @@ export class Controls {
     }
 
     draw() {
-        this.numberOfShapes.position(p5.windowWidth / 2 - 50, p5.windowHeight / 2 + app.state.canvas_h / 2 + 10);
-        this.numberOfShapesText.position(p5.windowWidth / 2 - 50 + 100 + 10, p5.windowHeight / 2 + app.state.canvas_h / 2 + 10)
+        let sliderSize: ElementSize = this.numberOfShapes.size() as ElementSize;
+        let textSize: ElementSize = this.numberOfShapesText.size() as ElementSize;
+
+        let sliderX = p5.windowWidth / 2 - sliderSize.width / 2;
+        let textX = sliderX + sliderSize.width + 10;
+
+        let offset = (textSize.width + 10) / 2;
+
+        this.numberOfShapes.position(-offset + sliderX, p5.windowHeight / 2 + app.state.canvas_h / 2 + 10);
+        this.numberOfShapesText.position(-offset + textX, p5.windowHeight / 2 + app.state.canvas_h / 2 + 10)
         this.numberOfShapesText.html('Number of circles: ' + this.numberOfShapes.value());
+
+        console.log(this.numberOfShapesText.size())  // width and height of element
     }
 
     private createNumberOfShapes() {
