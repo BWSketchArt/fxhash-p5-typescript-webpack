@@ -22,7 +22,7 @@ export class App {
     }
 
     createCanvasSize() {
-        this.state.canvas_w = p5.windowHeight * 0.9
+        this.state.canvas_w = p5.windowWidth * 0.9
         this.state.canvas_h = (this.state.canvas_w / this.config.getCanvasWHRatio()) * 0.9
 
         if (this.state.canvas_h * 1.1 > p5.windowHeight) {

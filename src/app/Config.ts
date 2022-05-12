@@ -9,6 +9,8 @@ export class Config {
     framerate: number
     // Angle mode
     angle_mode: p5.ANGLE_MODE
+    // Rectangle corner mode
+    rect_mode: p5.RECT_MODE
     // Canvas width target
     canvas_wt: number
     // Canvas height target
@@ -23,6 +25,7 @@ export class Config {
         this.author = "BWSketchArt"
         this.framerate = 30
         this.angle_mode = p5.RADIANS
+        this.rect_mode = p5.CENTER
         this.canvas_wt = 1920
         this.canvas_ht = 1080
         this.scale_step = 0.05
