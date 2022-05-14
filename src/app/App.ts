@@ -26,12 +26,15 @@ export class App {
     }
 
     createCanvasSize() {
-        this.state.canvas_w = p5.windowWidth * 0.9
-        this.state.canvas_h = (this.state.canvas_w / this.config.getCanvasWHRatio()) * 0.9
+        const width_mod = (1 - (this.config.canvas_wm / 100));     // 0.9
+        const height_offset = (1 + (this.config.canvas_wm / 100)); // 1.1
 
-        if (this.state.canvas_h * 1.1 > p5.windowHeight) {
+        this.state.canvas_w = p5.windowWidth * width_mod
+        this.state.canvas_h = (this.state.canvas_w / this.config.getCanvasWHRatio()) * width_mod
+
+        if (this.state.canvas_h * height_offset > p5.windowHeight) {
             this.state.canvas_w = p5.windowHeight / this.config.getCanvasHWRatio()
-            this.state.canvas_h = p5.windowHeight * 0.9
+            this.state.canvas_h = p5.windowHeight * width_mod
         }
     }
 

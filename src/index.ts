@@ -1,34 +1,27 @@
 import * as P5 from 'p5';
 import {App} from "./app/App";
 import {FxHash} from "./modules/FxHash";
-import {Controls} from "./modules/Controls";
-import {MakeLib} from "./lib/MakeLib";
-import {CalcLib} from "./lib/CalcLib";
-import {DrawLib} from "./lib/DrawLib";
-import {AlgoLib} from "./lib/AlgoLib";
 import {ColorHelper} from "./project/ColorHelper";
 import {PolygonHelper} from "./project/PolygonHelper";
+import {OldControls} from "./modules/OldControls";
+import {Controls} from "./app/Controls";
 
 // ============== Instance Declaration ==============
 
 // Core
-let p5: p5
+let p5: P5
 let app: App
 
 // Modules
 let fxhash: FxHash
+let oldControls: OldControls;
 let controls: Controls;
-
-// Lib
-let algo: AlgoLib;
-let make: MakeLib;
-let calc: CalcLib;
-let draw: DrawLib;
 
 // ============== Instance Initialization ==============
 
 const sketch = function (p5: P5) {
     p5.setup = function () {
+
         // setup p5 from config
         p5.angleMode(app.config.angle_mode)
         p5.rectMode(app.config.rect_mode);
@@ -43,16 +36,14 @@ const sketch = function (p5: P5) {
 
     p5.draw = function () {
         controls.draw();
+        oldControls.draw();
 
         p5.noFill();
         p5.background(0);
         p5.translate(app.state.pos.x, app.state.pos.y);
         p5.scale(app.state.scale);
 
-
-
-
-        const numberOfShapes = <number>controls.numberOfShapes.value();
+        const numberOfShapes = <number>oldControls.numberOfShapes.value();
         const colours = ColorHelper.getColorsArray(numberOfShapes);
 
         // CONSISTENT SPEED REGARDLESS OF FRAMERATE
@@ -91,20 +82,10 @@ fxhash.rand = (window as any)['fxrand'];
 // p5.js Setup
 p5 = new P5(sketch, window.document.body)
 
-// lib
-algo = new AlgoLib();
-calc = new CalcLib();
-draw = new DrawLib();
-make = new MakeLib();
-
-// App Setup
 app = new App();
 
 // init controls
+oldControls = new OldControls();
 controls = new Controls();
 
-export {
-    p5, app,
-    fxhash, controls,
-    algo, calc, draw, make
-}
+export {fxhash, p5, app}

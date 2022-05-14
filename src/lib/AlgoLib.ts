@@ -13,7 +13,7 @@ export class AlgoLib {
      * @param cpt circle center vector
      * @param r circle radius
      */
-    intersectLineCircle(p1: p5.Vector, p2: p5.Vector, cpt: p5.Vector, r: number) {
+    static intersectLineCircle(p1: p5.Vector, p2: p5.Vector, cpt: p5.Vector, r: number) {
 
         let sign = function (x: number) {
             return x < 0.0 ? -1 : 1;

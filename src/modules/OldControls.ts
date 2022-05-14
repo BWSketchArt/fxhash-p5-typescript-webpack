@@ -5,9 +5,10 @@ interface ElementSize {
     height: number
 }
 
-export class Controls {
+export class OldControls {
     numberOfShapes: p5.Element
     numberOfShapesText: p5.Element
+    container: p5.Element;
 
     constructor(show: boolean = true) {
         if (show === false)
@@ -25,17 +26,27 @@ export class Controls {
 
         let offset = (textSize.width + 10) / 2;
 
-        this.numberOfShapes.position(-offset + sliderX, p5.windowHeight / 2 + app.state.canvas_h / 2 + 10);
-        this.numberOfShapesText.position(-offset + textX, p5.windowHeight / 2 + app.state.canvas_h / 2 + 10)
+        //this.numberOfShapes.position(-offset + sliderX, p5.windowHeight / 2 + app.state.canvas_h / 2 + 10);
+        //this.numberOfShapesText.position(-offset + textX, p5.windowHeight / 2 + app.state.canvas_h / 2 + 10)
         this.numberOfShapesText.html('Number of circles: ' + this.numberOfShapes.value());
-
-        console.log(this.numberOfShapesText.size())  // width and height of element
+        this.container.style('top', (p5.windowHeight / 2 + app.state.canvas_h / 2 + 10) + 'px');
     }
 
     private createNumberOfShapes() {
-        this.numberOfShapesText = p5.createP('Number of circles').style('color', 'cyan');
+        this.container = p5.createDiv().style('position', 'absolute').style('width', '90%');
+
+        let group = p5.createDiv().class('group');
+
+        this.container.child(group);
+
+        this.numberOfShapesText = p5.createElement('label', 'Number of circles')
+            .style('color', 'cyan').style('float', 'right').style('padding', '0 5px');
+
         this.numberOfShapes = p5.createSlider(1, 30, 15, 1)
             .style("width", "100px")
             .style("height", "20px")
+
+        group.child(this.numberOfShapesText);
+        group.child(this.numberOfShapes);
     }
 }

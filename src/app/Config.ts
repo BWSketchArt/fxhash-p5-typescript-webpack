@@ -2,23 +2,25 @@ import {p5} from "../index";
 
 export class Config {
     // App name
-    name: string
+    readonly name: string
     // App author
-    author: string
+    readonly author: string
     // Framerate
-    framerate: number
+    readonly framerate: number
     // Angle mode
-    angle_mode: p5.ANGLE_MODE
+    readonly angle_mode: p5.ANGLE_MODE
     // Rectangle corner mode
-    rect_mode: p5.RECT_MODE
+    readonly rect_mode: p5.RECT_MODE
     // Canvas width target
-    canvas_wt: number
+    readonly canvas_wt: number
     // Canvas height target
-    canvas_ht: number
+    readonly canvas_ht: number
     // Canvas scale step
-    scale_step: number
+    readonly scale_step: number
     // Canvas pos step
-    pos_step: number
+    readonly pos_step: number
+    // Canvas width margin in percents
+    readonly canvas_wm: number
 
     constructor() {
         this.name = "Gears"
@@ -28,6 +30,7 @@ export class Config {
         this.rect_mode = p5.CENTER
         this.canvas_wt = 1920
         this.canvas_ht = 1080
+        this.canvas_wm = 10;
         this.scale_step = 0.05
         this.pos_step = 0.05
     }
