@@ -1,7 +1,7 @@
-import {p5} from "../index";
+import {p5} from "../app";
 
 export class DrawLib {
-    static point(x: number, y: number, color: string = '#00F', strokeW: number = 2) {
+    static drawPoint(x: number, y: number, color: string = '#00F', strokeW: number = 2) {
         p5.push();
 
         p5.strokeWeight(strokeW);

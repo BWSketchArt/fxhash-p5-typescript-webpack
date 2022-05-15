@@ -1,4 +1,5 @@
-import {p5} from "../../index";
+import {p5} from "../../app";
+
 import {PositionFloatEnum} from "./ControlsEnum";
 
 export default abstract class ControlGroup {

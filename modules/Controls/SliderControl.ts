@@ -1,5 +1,6 @@
+import {p5} from "../../app";
+
 import {PositionFloatEnum} from "./ControlsEnum";
-import {p5} from "../../index";
 import ControlGroup from "./ControlGroup";
 
 export class SliderControl extends ControlGroup {
@@ -26,8 +27,8 @@ export class SliderControl extends ControlGroup {
         this.step = step;
     }
 
-    getValue() {
-        return this.slider.value();
+    getValue(): number {
+        return <number>this.slider.value();
     }
 
     setTextPosition(textPosition: PositionFloatEnum) {

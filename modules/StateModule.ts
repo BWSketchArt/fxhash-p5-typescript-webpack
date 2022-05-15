@@ -1,6 +1,8 @@
 import * as p5 from "p5";
 
-export class State {
+import {fxhash} from "../app";
+
+export class StateModule {
     // Random seed
     seed: number
     // Random hash
@@ -22,7 +24,7 @@ export class State {
     // Mouse release position
     mouse_r: p5.Vector
 
-    constructor(randomNumber: number, hash: string) {
+    constructor(randomNumber: number = fxhash.rand(), hash: string = fxhash.hash()) {
         this.seed = ~~(randomNumber * 123456789)
         this.hash = hash
     }

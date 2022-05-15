@@ -1,4 +1,4 @@
-import {p5} from "../index";
+import {p5} from "../../app";
 
 export class ColorHelper {
     private static getColorVector(c: p5.Color) {

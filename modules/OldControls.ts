@@ -1,4 +1,4 @@
-import {app, p5} from "../index";
+import {app, p5} from "../app";
 
 interface ElementSize {
     width: number,

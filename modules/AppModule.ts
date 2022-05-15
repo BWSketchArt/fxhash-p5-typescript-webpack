@@ -1,28 +1,25 @@
-import {Config} from "./Config";
-import {State} from "./State";
-import {fxhash} from "../index";
-import {p5} from "../index";
+import {p5} from "../app";
 
-export class App {
-    config: Config
-    state: State
+import {ConfigModule} from "./ConfigModule";
+import {StateModule} from "./StateModule";
 
-    constructor() {
-        this.config = new Config()
-        this.state = new State(fxhash.rand(), fxhash.hash())
+export class AppModule {
+    config: ConfigModule
+    state: StateModule
+    title: string
+
+    constructor(config: ConfigModule, state: StateModule) {
+        this.config = config
+        this.state = state
 
         this.createTitle();
-
         this.createCanvasSize();
         this.createPosition();
         this.createScale();
-
-        console.log(`🚀 App Started | %s | Seed: %s, Hash: %s`,
-            window.document.title, this.state.seed, this.state.hash);
     }
 
     createTitle() {
-        window.document.title = `${this.config.name} by ${this.config.author}`
+        this.title = window.document.title = `${this.config.name} by ${this.config.author}`
     }
 
     createCanvasSize() {

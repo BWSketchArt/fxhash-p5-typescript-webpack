@@ -1,18 +1,22 @@
-import {ControlBar} from "../modules/ControlBar";
+import {app} from "../app";
+
+import {ControlBarModule} from "../modules/ControlBarModule";
 import {ControlsLocationEnum} from "../modules/Controls/ControlsEnum";
-import {app} from "../index";
 import {SliderControl} from "../modules/Controls/SliderControl";
 import {TextControl} from "../modules/Controls/TextControl";
 
 export class Controls {
-    topBar: ControlBar = new ControlBar(ControlsLocationEnum.TOP)
-    bottomBar: ControlBar = new ControlBar(ControlsLocationEnum.BOTTOM)
+    topBar: ControlBarModule
+    bottomBar: ControlBarModule
 
     author: TextControl
     viewport: TextControl
     slider: SliderControl
 
     constructor() {
+        this.topBar = new ControlBarModule(ControlsLocationEnum.TOP);
+        this.bottomBar = new ControlBarModule(ControlsLocationEnum.BOTTOM);
+
         // ------------- Top Bar -------------
 
         this.viewport = this.topBar.addDynamicText(

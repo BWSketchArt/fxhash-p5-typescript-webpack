@@ -1,14 +1,15 @@
-import {app, p5} from "../index";
 import * as P5 from 'p5';
 
+import {app, p5} from "../app";
+
 export class MakeLib {
-    static vectorFromAngle(angle: number, height: number) {
+    static makeVectorFromAngle(angle: number, height: number) {
         angle = (app.config.angle_mode === p5.DEGREES) ? p5.radians(angle) : angle;
 
         return P5.Vector.fromAngle(angle, height)
     }
 
-    static vectorFromAngleAtPos(angle: number, height: number, x: number = 0, y: number = 0) {
+    static makeVectorFromAngleAtPos(angle: number, height: number, x: number = 0, y: number = 0) {
         p5.push()
 
         p5.translate(x, y)

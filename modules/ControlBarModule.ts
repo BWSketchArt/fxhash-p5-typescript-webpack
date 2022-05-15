@@ -1,10 +1,11 @@
-import {app, p5} from "../index";
+import {app, p5} from "../app";
+
 import {ControlsLocationEnum} from "./Controls/ControlsEnum";
 import {SliderControl} from "./Controls/SliderControl";
 import ControlGroup from "./Controls/ControlGroup";
 import {TextControl} from "./Controls/TextControl";
 
-export class ControlBar {
+export class ControlBarModule {
     className: string = "control-bar";
     offset: number = 10;
 

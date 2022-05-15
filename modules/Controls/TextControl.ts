@@ -1,5 +1,5 @@
-import {PositionFloatEnum} from "./ControlsEnum";
-import {p5} from "../../index";
+import {p5} from "../../app";
+
 import ControlGroup from "./ControlGroup";
 
 export class TextControl extends ControlGroup {

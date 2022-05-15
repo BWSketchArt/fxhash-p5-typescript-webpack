@@ -1,4 +1,4 @@
-import {p5} from "../index";
+import {p5} from "../../app";
 
 export class PolygonHelper {
     public static draw(numberOfSides: number, width: number) {
