@@ -62,7 +62,7 @@ export function randIntExcluding(max: number, min: number = 0) {
  *
  * // with wildcard weights
  * randOption(["apple","banana","monkey"], [10,0,30]) // 10% for apple, 30% for monkey, the rest 60% for banana
- * randOption(["apple","banana","monkey"], [10,30])   // 10% for apple, 30% for banana, the rest 60% for monkey
+ * randOption(["apple","banana","monkey"], [30,10])   // 30% for apple, 10% for banana, the rest 60% for monkey
  * ```
  * @param options
  * @param weights
