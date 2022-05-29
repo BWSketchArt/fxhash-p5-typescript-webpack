@@ -3,6 +3,8 @@ import {App} from "./app/App";
 import {FxHashModule} from "./modules/FxHashModule";
 import {OldControls} from "./modules/OldControls";
 import {Controls} from "./app/Controls";
+import {Config} from "./app/Config";
+import {State} from "./app/State";
 
 // ============== Instance Declaration ==============
 
@@ -18,8 +20,8 @@ let controls: Controls;
 // ============== Instance Initialization ==============
 
 const sketch = function (p5: P5) {
-    p5.setup = function () {
 
+    p5.setup = function () {
         // setup p5 from config
         p5.angleMode(app.config.angle_mode)
         p5.rectMode(app.config.rect_mode);
@@ -30,6 +32,8 @@ const sketch = function (p5: P5) {
 
         // resize canvas
         p5.windowResized();
+
+        app.setup();
     }
 
     p5.draw = function () {
@@ -56,7 +60,7 @@ fxhash.rand = (window as any)['fxrand'];
 p5 = new P5(sketch, window.document.body)
 
 // App Setup
-app = new App();
+app = new App(new Config(), new State());
 
 // init controls
 oldControls = new OldControls();
