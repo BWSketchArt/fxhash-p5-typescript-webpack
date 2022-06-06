@@ -1,6 +1,6 @@
 import {p5} from "../../app";
 
-import {PositionFloatEnum} from "../Enum/PositionFloatEnum";
+import {FloatPositionEnum} from "../Enum/FloatPositionEnum";
 import ControlGroup from "./ControlGroup";
 
 export class SliderControl extends ControlGroup {
@@ -11,7 +11,7 @@ export class SliderControl extends ControlGroup {
     value: number
     step: number
     width: number
-    textPosition: PositionFloatEnum
+    textPosition: FloatPositionEnum
 
     container: p5.Element
     label: p5.Element
@@ -20,7 +20,7 @@ export class SliderControl extends ControlGroup {
     constructor(min: number, max: number, value: number = 0, step: number = 1) {
         super();
 
-        this.textPosition = PositionFloatEnum.LEFT;
+        this.textPosition = FloatPositionEnum.LEFT;
         this.min = min;
         this.max = max;
         this.value = value;
@@ -31,7 +31,7 @@ export class SliderControl extends ControlGroup {
         return <number>this.slider.value();
     }
 
-    setTextPosition(textPosition: PositionFloatEnum) {
+    setTextPosition(textPosition: FloatPositionEnum) {
         this.textPosition = textPosition;
     }
 

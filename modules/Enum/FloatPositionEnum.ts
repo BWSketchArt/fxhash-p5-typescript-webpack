@@ -1,4 +1,4 @@
-export enum PositionFloatEnum {
+export enum FloatPositionEnum {
     LEFT = "left",
     RIGHT = "right"
 }
