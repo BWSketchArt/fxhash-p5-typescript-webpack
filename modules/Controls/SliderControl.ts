@@ -2,6 +2,15 @@ import {p5} from "../../app";
 
 import ControlGroup from "./ControlGroup";
 
+export interface SliderConfig {
+    min?: number,
+    max?: number,
+    value?: number,
+    step?: number,
+    width?: number,
+    text?: string | ((val?: number) => string)
+}
+
 export class SliderControl extends ControlGroup {
     groupClass: string = "slider";
 
@@ -42,9 +51,12 @@ export class SliderControl extends ControlGroup {
         this.slider = p5.createSlider(this.min, this.max, this.value, this.step)
             .style("width", this.width + "px")
             .style("height", "20px")
+            .style('z-index', '99999')
         this.container.child(this.slider);
 
-        this.label = p5.createElement('span', this.getText());
+        this.label = p5.createElement('span', this.getText())
+            .style('margin-top', '0.075rem')
+            .style('margin-left', '0.5rem');
         this.container.child(this.label);
 
         return this.container;
@@ -63,9 +75,9 @@ export class SliderControl extends ControlGroup {
         return this;
     }
 
-    setDynamicText(fn: () => string) {
+    setDynamicText(fn: (val: number) => string) {
         this.hasDynamicText = true;
-        this.getText = fn;
+        this.getText = () => fn(this.getValue());
 
         return this;
     }

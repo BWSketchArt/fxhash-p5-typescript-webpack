@@ -1,8 +1,14 @@
 import {StateModule} from "../modules/StateModule";
-import {oldControls} from "../app";
+import {controls} from "../app";
 
 export class State extends StateModule {
     getNumberOfShapes(): number {
-        return <number>oldControls.numberOfShapes.value();
+        return controls.circleSlider.getValue();
+    }
+    getColorValue(): number {
+        return controls.colorSlider.getValue();
+    }
+    getZoomValue(): number {
+        return controls.zoomSlider.getValue();
     }
 }

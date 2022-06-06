@@ -17,9 +17,9 @@ export class App extends AppModule {
     draw() {
 
         p5.noFill();
-        p5.background(0);
+        p5.background(this.state.getColorValue(), 0, 0);
         p5.translate(this.state.pos.x, this.state.pos.y);
-        p5.scale(this.state.scale);
+        p5.scale(this.state.scale * (1 + this.state.getZoomValue() / 100));
 
         const numberOfShapes = this.state.getNumberOfShapes();
         const colours = ColorHelper.getColorsArray(numberOfShapes);

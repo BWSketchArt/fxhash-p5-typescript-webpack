@@ -1,7 +1,6 @@
 import * as P5 from 'p5';
 import {App} from "./app/App";
 import {FxHashModule} from "./modules/FxHashModule";
-import {OldControls} from "./modules/OldControls";
 import {Controls} from "./app/Controls";
 import {Config} from "./app/Config";
 import {State} from "./app/State";
@@ -14,7 +13,6 @@ let app: App
 
 // Modules
 let fxhash: FxHashModule
-let oldControls: OldControls;
 let controls: Controls;
 
 // ============== Instance Initialization ==============
@@ -38,7 +36,6 @@ const sketch = function (p5: P5) {
 
     p5.draw = function () {
         controls.draw();
-        oldControls.draw();
         app.draw();
     }
 
@@ -63,7 +60,6 @@ p5 = new P5(sketch, window.document.body)
 app = new App(new Config(), new State());
 
 // init controls
-oldControls = new OldControls();
 controls = new Controls();
 
-export {fxhash, p5, app, oldControls, controls}
+export {fxhash, p5, app, controls}
