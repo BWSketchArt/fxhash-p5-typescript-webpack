@@ -2,6 +2,7 @@ import {p5} from "../app";
 
 import {ConfigModule} from "./ConfigModule";
 import {StateModule} from "./StateModule";
+import {numRound} from "../lib/numLib";
 
 export class AppModule {
     config: ConfigModule
@@ -33,6 +34,9 @@ export class AppModule {
             this.state.canvas_w = p5.windowHeight / this.config.getCanvasHWRatio()
             this.state.canvas_h = p5.windowHeight * width_mod
         }
+
+        this.state.canvas_w = numRound(this.state.canvas_w, 2);
+        this.state.canvas_h = numRound(this.state.canvas_h, 2);
     }
 
     createScale() {

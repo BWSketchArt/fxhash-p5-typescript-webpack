@@ -5,7 +5,6 @@ import {State} from "./State";
 import {AppModule} from "../modules/AppModule";
 import {PolygonHelper} from "./project/PolygonHelper";
 import {ColorHelper} from "./project/ColorHelper";
-import {randOption} from "../lib/randLib";
 
 export class App extends AppModule {
     config: Config
@@ -13,7 +12,6 @@ export class App extends AppModule {
 
     setup() {
         console.log(`🚀 App Started | %s | Seed: %s, Hash: %s`, this.title, this.state.seed, this.state.hash);
-        console.log(randOption(["black","white","red","yellow"],[10,20,30]));
     }
 
     draw() {

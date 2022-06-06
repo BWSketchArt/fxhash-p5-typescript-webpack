@@ -1,6 +1,6 @@
 import {p5} from "../../app";
 
-import {PositionFloatEnum} from "./ControlsEnum";
+import {PositionFloatEnum} from "../Enum/PositionFloatEnum";
 import ControlGroup from "./ControlGroup";
 
 export class SliderControl extends ControlGroup {
@@ -13,7 +13,7 @@ export class SliderControl extends ControlGroup {
     width: number
     textPosition: PositionFloatEnum
 
-    group: p5.Element
+    container: p5.Element
     label: p5.Element
     slider: p5.Element
 
@@ -45,20 +45,18 @@ export class SliderControl extends ControlGroup {
 
     // -------------------- TEXT ---------------------
 
-    textFn: () => string
-
     getText() {
-        return this.textFn();
+        return '';
     }
 
     setText(text: string) {
-        this.textFn = () => text;
+        this.getText = () => text;
 
         return this;
     }
 
     setDynamicText(fn: () => string) {
-        this.textFn = fn;
+        this.getText = fn;
 
         return this;
     }

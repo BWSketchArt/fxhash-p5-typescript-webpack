@@ -5,34 +5,43 @@ import ControlGroup from "./ControlGroup";
 export class TextControl extends ControlGroup {
     groupClass: string = "text";
 
-    group: p5.Element
+    container: p5.Element
     span: p5.Element
 
+    hasDynamicText: boolean = false;
 
     draw(): void {
-
+        if (this.hasDynamicText)
+            this.span.html(this.getText());
     }
 
     buildGroup(): p5.Element {
-        return undefined;
+        const cls = this.hasDynamicText ? 'dynamic-' + this.groupClass : this.groupClass;
+
+        this.container = p5.createDiv().class(cls);
+        this.span = p5.createElement('span', this.getText());
+
+        this.container.child(this.span);
+
+        return this.container;
     }
 
     // -------------------- TEXT ---------------------
 
-    textFn: () => string
-
     getText() {
-        return this.textFn();
+        return '';
     }
 
     setText(text: string) {
-        this.textFn = () => text;
+        this.hasDynamicText = false;
+        this.getText = () => text;
 
         return this;
     }
 
     setDynamicText(fn: () => string) {
-        this.textFn = fn;
+        this.hasDynamicText = true;
+        this.getText = fn;
 
         return this;
     }

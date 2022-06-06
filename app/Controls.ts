@@ -1,9 +1,10 @@
 import {app} from "../app";
 
 import {ControlBarModule} from "../modules/ControlBarModule";
-import {ControlsLocationEnum} from "../modules/Controls/ControlsEnum";
+import {ControlLocationEnum} from "../modules/enum/ControlLocationEnum";
 import {SliderControl} from "../modules/Controls/SliderControl";
 import {TextControl} from "../modules/Controls/TextControl";
+import {TextAlignEnum} from "../modules/Enum/TextAlignEnum";
 
 export class Controls {
     topBar: ControlBarModule
@@ -14,20 +15,20 @@ export class Controls {
     slider: SliderControl
 
     constructor() {
-        this.topBar = new ControlBarModule(ControlsLocationEnum.TOP);
-        this.bottomBar = new ControlBarModule(ControlsLocationEnum.BOTTOM);
+        this.topBar = new ControlBarModule(ControlLocationEnum.TOP, TextAlignEnum.RIGHT);
+        this.bottomBar = new ControlBarModule(ControlLocationEnum.BOTTOM);
 
         // ------------- Top Bar -------------
 
-        this.viewport = this.topBar.addDynamicText(
-            () => `Viewport: ${app.state.canvas_w} x ${app.state.canvas_h}`)
+        this.viewport = this.topBar.addDynamicText(() =>
+            `Viewport: ${app.state.canvas_w} x ${app.state.canvas_h}`)
 
         // ------------- Bottom Bar -------------
 
-        this.author = this.bottomBar.addText('© BWSketchArt')
+        this.author = this.bottomBar.addText('© BWSketchArt');
 
-        this.slider = this.bottomBar.addSlider(1, 30, 15).setDynamicText(
-            () => `Number of circles: ${this.slider.getValue()}`)
+        this.slider = this.bottomBar.addSlider(1, 30, 15)
+            .setDynamicText(() => `Number of circles: ${this.slider.getValue()}`)
     }
 
     draw() {

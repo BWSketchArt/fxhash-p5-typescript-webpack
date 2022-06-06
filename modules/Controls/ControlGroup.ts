@@ -1,10 +1,10 @@
 import {p5} from "../../app";
 
-import {PositionFloatEnum} from "./ControlsEnum";
+import {PositionFloatEnum} from "../Enum/PositionFloatEnum";
 
 export default abstract class ControlGroup {
-    abstract groupClass: string
-    abstract group: p5.Element;
+    protected abstract groupClass: string
+    protected abstract container: p5.Element;
 
     private position: PositionFloatEnum;
 
@@ -12,11 +12,19 @@ export default abstract class ControlGroup {
         this.position = PositionFloatEnum.LEFT;
     }
 
-    setPosition(position: PositionFloatEnum) {
+    getContainer() {
+        return this.container;
+    }
+
+    getGroupClass() {
+        return this.groupClass;
+    }
+
+    setFloatDirection(position: PositionFloatEnum) {
         this.position = position;
     }
 
-    getPosition(): PositionFloatEnum {
+    getFloatDirection(): PositionFloatEnum {
         return this.position;
     }
 
