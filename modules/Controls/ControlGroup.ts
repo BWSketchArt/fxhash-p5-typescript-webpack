@@ -6,6 +6,10 @@ export default abstract class ControlGroup {
     protected abstract groupClass: string
     protected abstract container: p5.Element;
 
+    protected buildContainer() {
+        return p5.createDiv().class(this.groupClass).style('display', 'inline-flex');
+    }
+
     getContainer() {
         return this.container;
     }

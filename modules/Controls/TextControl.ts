@@ -16,11 +16,9 @@ export class TextControl extends ControlGroup {
     }
 
     buildGroup(): p5.Element {
-        const cls = this.hasDynamicText ? 'dynamic-' + this.groupClass : this.groupClass;
+        this.container = this.buildContainer();
 
-        this.container = p5.createDiv().class(cls);
         this.span = p5.createElement('span', this.getText());
-
         this.container.child(this.span);
 
         return this.container;
