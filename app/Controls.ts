@@ -45,6 +45,6 @@ export class Controls extends AbstractControls {
         this.circleSlider = bar.addSlider(1, 30, 15, 1, 150)
             .setDynamicText((val: number) => `Number of circles: ${val}`);
 
-        this.authorText = bar.addText('© BWSketchArt').floatRight();
+        this.authorText = bar.addText('Generative Art Demo was created by Gareth Williams').floatRight();
     }
 }
